@@ -14,6 +14,10 @@ class todoList:
         }
         self.tasks.append(task)
         print(f"Task {description} added successful.")
+    
+    def view_task(self):
+        for task in self.tasks:
+            print(f"{task['id']}. {task['description']}")
 
 """def main():
     print("Testing")"""
@@ -21,4 +25,5 @@ class todoList:
 if __name__ == "__main__":
     todo = todoList()
     todo.adding_task("Hello world")
+    todo.view_task()
     #main()
