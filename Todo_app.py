@@ -16,14 +16,29 @@ class todoList:
         print(f"Task {description} added successful.")
     
     def view_task(self):
+        if not self.tasks:
+            print("Task not Found!")
+            return
+        print("===> Your Task <===")
+        print("-" * 50)
         for task in self.tasks:
-            print(f"{task['id']}. {task['description']}")
+            status = "Done" if task['completed'] else ""
+            print(f"{task['id']}. [{status}] {task['description']}")
+        print("-" * 50)
+    def complete_task(self,task_id):
+        for task in self.tasks:
+            if task['id'] == task_id:
+                task['completed'] = True
+                print(f"Task with ID {task_id} mark as completed.")
+                return
+        print(f"Task with ID {task_id} not foound!")
 
 """def main():
     print("Testing")"""
 
 if __name__ == "__main__":
     todo = todoList()
-    todo.adding_task("Hello world")
+    #todo.adding_task("Hello world")
+    todo.complete_task(1)
     todo.view_task()
     #main()
